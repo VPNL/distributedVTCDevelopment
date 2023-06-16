@@ -75,36 +75,10 @@ for v=1:length(voxelSubsets)
     
 end
 
-% Bar plot with these conditions
+% Box plot with these conditions
 % (1) selective-10, (2) non-selective-10 (3) all-selective + age,
 
-figure(2)
-barPlotData = [AllPE.('selective').('brain').data,... % Model with only distinctiveness
-    AllPE.('nonSelective').('brain').data, ... % Model with only distinctiveness
-    AllPE.('selective').('brainAge').data ]  % -------model distinctiveness and AGE 
-
-whichVoxels = { 'selective', 'nonSelective', 'selective'};
-whichModel = {  'brain'     , 'brain' ,      'brainAge'};
-
-
-b= bar([1 2 3 ], [median(barPlotData(:,1)) median(barPlotData(:,2)) median(barPlotData(:,3))], 'FaceColor','flat' ,  'EdgeColor', 'none');
-hold on
-    
-    
-for v=1:length(whichVoxels)
-    stderror= std( AllPE.(whichVoxels{v}).(whichModel{v}).data ) / sqrt( length( AllPE.(whichVoxels{v}).(whichModel{v}).data ));
-    pl=plot([v v], [median(AllPE.(whichVoxels{v}).(whichModel{v}).data)-stderror median(AllPE.(whichVoxels{v}).(whichModel{v}).data)+stderror], 'k');
-    pl.LineWidth = 2;
-
-    xlb{1, v} = [whichVoxels{v} ' ' whichModel{v}];
-end
-
-ylabel('Median absolute prediction error')
-xticklabels(xlb)
-xtickangle(30)
-
-box off
-set(gcf, 'color', 'white')
+f2 = figure('Position', [0 0 300 500]);
 
 % Set up colors, different for words and faces
 if contains(category, 'Words')
@@ -118,18 +92,36 @@ else
 end
 
 
-% color bar plots
-b.CData(1,:) = plotColors(1,:);
-b.CData(2,:) = plotColors(2,:);
-b.CData(3,:) = plotColors(3,:);
+%% create box plot
+boxPlotData = [AllPE.('selective').('brain').data,... % Model with only distinctiveness
+    AllPE.('nonSelective').('brain').data, ... % Model with only distinctiveness
+    AllPE.('selective').('brainAge').data ]  % -------model distinctiveness and AGE 
 
-ylim([5 20])
-titlestr=sprintf('%s distinctiveness for %s %s', roi, category, test);
+groupNames ={'selective', 'non-selective', 'selective+age'};
+bp=boxplot(boxPlotData, groupNames, 'Widths', 0.8, 'Symbol', '+', 'Color',[0.4 0.4 0.4] );
+gcf = formatBoxPlotLines(gcf, bp);
+
+% Color boxplot
+b = findobj(gca,'Tag','Box');
+patch(get(b(3),'XData'),get(b(3),'YData'), plotColors(1,:), 'FaceAlpha',.75 ); 
+patch(get(b(2),'XData'),get(b(2),'YData'), plotColors(2,:), 'FaceAlpha',.75 ); 
+patch(get(b(1),'XData'),get(b(1),'YData'), plotColors(3,:), 'FaceAlpha',.75 );
+
+ylabel('Median absolute prediction error', 'FontSize', 12)
+xticklabels(groupNames)
+xtickangle(30)
+
+set(f2, 'color', 'white')
+box off
+ylim([0 35])
+
+
+titlestr=sprintf('%s %s %s', roi, category, test);
 title(titlestr, 'Interpreter', 'none')
-figureStr=sprintf('BarPlot_ModelComp_%s_%s_%s', roi, category, test);
+figureStr=sprintf('BoxPlot_ModelComp_%s_%s_%s', roi, category, test);
 
-set(gcf, 'Position', [0 0 300 500]);
-%print(fullfile(figuresDir, figureStr), '-dpng', '-r200')
+
+print(fullfile(figuresDir, figureStr), '-dpng', '-r200')
 
 
 
