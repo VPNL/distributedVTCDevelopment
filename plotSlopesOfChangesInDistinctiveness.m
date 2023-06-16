@@ -7,7 +7,14 @@ dataDir = './data/';
 figuresDir = './figures/';
 fileName = 'RSM_zscore_allChildrenNew_vtc_noSubID';
 
-% Load RSM data. Struct is organized by ROI (left and right lateral VTC),
+% indicate if you want to plot data for medial or lateral VTC: 
+% partition = 'lateral' or partition = 'medial'
+
+partition = 'medial';
+
+%%
+
+% Load RSM data. Struct is organized by ROI & partition (left and right lateral & medial VTC),
 % subject and session
 load([dataDir fileName])
 
@@ -16,7 +23,7 @@ categories= {'Numbers', 'Words', 'Limbs', 'Bodies', 'AdultFaces', 'ChildFaces',.
  'Cars', 'StringInstruments', 'Houses', 'Corridors'};
 
 %% Gather data and compute distinctiveness for each session and ROI, Run linear mixed models
-rois = fieldnames(RSMnoIDs);
+rois = {['lh_vtc_' partition], ['rh_vtc_' partition]};
 slopeData = [];
 lowerCI = [];
 upperCI = [];
@@ -112,8 +119,10 @@ set(gcf, 'Color', 'w')
 ylabel('Change in distinctiveness (per year)', 'FontSize', 12)
 xticklabels(categories)
 xtickangle(45)
+titlestr = [partition ' VTC'];
+title(titlestr)
 
 %% save figure
-figureName = 'BarPlot_ChangeInDistinctivenessPerYear';
+figureName = ['BarPlot_ChangeInDistinctivenessPerYear_' partition];
  print(fullfile(figuresDir, figureName), '-dpng', '-r200')
 

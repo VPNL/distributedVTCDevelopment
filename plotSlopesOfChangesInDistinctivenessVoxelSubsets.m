@@ -3,12 +3,18 @@
 % 1) the union of the selective voxels
 % 2) the non-selective voxels
 
+%%
+clear all; close all;
+% indicate if you want to plot data for medial or lateral VTC: 
+% partition = 'lateral' or partition = 'medial'
+partition = 'medial';
+
 
 %% Set up paths, files and variables
 dataDir = './data/';
 figuresDir = './figures/';
-fileNames = {'RSM_zscore_29Children128Sessions_vtc_selective_8categories_union_noSubID', ...
-    'RSM_zscore_29Children128Sessions_vtc_nonSelective_8categories_union_noSubID'};
+fileNames = {'RSM_zscore_29children_LatMed_vtc_selective_8categories_union_noSubID', ...
+    'RSM_zscore_29children_LatMed_vtc_nonSelective_8categories_union_noSubID'};
 
 
 % Order of categories in RSM. 
@@ -16,7 +22,7 @@ categories= {'Numbers', 'Words', 'Limbs', 'Bodies', 'AdultFaces', 'ChildFaces',.
  'Cars', 'StringInstruments', 'Houses', 'Corridors'};
 
 %% Gather data and compute distinctiveness for each session and ROI, Run linear mixed models
-rois = {'lh_vtc_lateral', 'rh_vtc_lateral'};
+rois = {['lh_vtc_' partition], ['rh_vtc_' partition]};
 slopeData = [];
 lowerCI = [];
 upperCI = [];
@@ -82,18 +88,18 @@ allCILower = [];
 allCIUpper = [];
 % reformat data for grouped bar plot 
 for g=1:length(categories)
-allSlopesCategory = [allCoefficients.(categories{g}).('selective').('lh_vtc_lateral').coeffs{2,2} allCoefficients.(categories{g}).('selective').('rh_vtc_lateral').coeffs{2,2} ...
-    allCoefficients.(categories{g}).('nonSelective').('lh_vtc_lateral').coeffs{2,2} allCoefficients.(categories{g}).('nonSelective').('rh_vtc_lateral').coeffs{2,2}];
+allSlopesCategory = [allCoefficients.(categories{g}).('selective').(['lh_vtc_' partition]).coeffs{2,2} allCoefficients.(categories{g}).('selective').(['rh_vtc_' partition]).coeffs{2,2} ...
+    allCoefficients.(categories{g}).('nonSelective').(['lh_vtc_' partition]).coeffs{2,2} allCoefficients.(categories{g}).('nonSelective').(['rh_vtc_' partition]).coeffs{2,2}];
 
 allSlopes = [allSlopes; allSlopesCategory];
 
-allCILowerCategory = [allCoefficients.(categories{g}).('selective').('lh_vtc_lateral').coeffs{2,7} allCoefficients.(categories{g}).('selective').('rh_vtc_lateral').coeffs{2,7} ...
-    allCoefficients.(categories{g}).('nonSelective').('lh_vtc_lateral').coeffs{2,7} allCoefficients.(categories{g}).('nonSelective').('rh_vtc_lateral').coeffs{2,7}];
+allCILowerCategory = [allCoefficients.(categories{g}).('selective').(['lh_vtc_' partition]).coeffs{2,7} allCoefficients.(categories{g}).('selective').(['rh_vtc_' partition ]).coeffs{2,7} ...
+    allCoefficients.(categories{g}).('nonSelective').(['lh_vtc_' partition]).coeffs{2,7} allCoefficients.(categories{g}).('nonSelective').(['rh_vtc_' partition]).coeffs{2,7}];
 
 allCILower = [allCILower; allCILowerCategory];
 
-allCIUpperCategory = [allCoefficients.(categories{g}).('selective').('lh_vtc_lateral').coeffs{2,8} allCoefficients.(categories{g}).('selective').('rh_vtc_lateral').coeffs{2,8} ...
-    allCoefficients.(categories{g}).('nonSelective').('lh_vtc_lateral').coeffs{2,8} allCoefficients.(categories{g}).('nonSelective').('rh_vtc_lateral').coeffs{2,8}];
+allCIUpperCategory = [allCoefficients.(categories{g}).('selective').(['lh_vtc_' partition]).coeffs{2,8} allCoefficients.(categories{g}).('selective').(['rh_vtc_' partition]).coeffs{2,8} ...
+    allCoefficients.(categories{g}).('nonSelective').(['lh_vtc_' partition]).coeffs{2,8} allCoefficients.(categories{g}).('nonSelective').(['rh_vtc_' partition]).coeffs{2,8}];
 
 allCIUpper = [allCIUpper; allCIUpperCategory];
 
@@ -140,6 +146,9 @@ ylim([-0.05 0.06])
 xlabel('categories', 'FontSize', 10)
 xticklabels(categories); xtickangle(90)
 
+titlestr = [partition ' VTC'];
+title(titlestr)
+
 legendStr={};
 
 for n=1:length(fileNames)
@@ -162,6 +171,6 @@ lg.FontSize=10;
 
 
 %% save figure
-figureName = 'BarPlot_ChangeInDistinctivenessPerYear_voxelSubsets';
+figureName = ['BarPlot_ChangeInDistinctivenessPerYear_voxelSubsets_' partition];
  print(fullfile(figuresDir, figureName), '-dpng', '-r200')
 
