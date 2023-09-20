@@ -1,7 +1,8 @@
 % This script creates a scatter plot showing category
 % distinctiveness by age
 
-
+clear all
+close all
 %% Set up paths, files and variables
 dataDir = './data/';
 figuresDir = './figures/';

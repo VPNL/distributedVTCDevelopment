@@ -1,6 +1,7 @@
 % This script plots the slopes of linear mixed models indicating the change in
 % distinctiveness per year
-
+close all
+clear all
 
 %% Set up paths, files and variables
 dataDir = './data/';
@@ -9,8 +10,7 @@ fileName = 'RSM_zscore_allChildrenNew_vtc_noSubID';
 
 % indicate if you want to plot data for medial or lateral VTC: 
 % partition = 'lateral' or partition = 'medial'
-
-partition = 'medial';
+partition = 'lateral';
 
 %%
 

@@ -9,14 +9,14 @@ figuresDir = './figures/';
 
 % Indicate the category (category= 'Words' or 'AdultFaces')
 category = 'Words';
-% Indicate the ROI (roi = 'lh_vtc_lateral' or 'rh_vtc_lateral')
+% Indicate the ROI (for words: roi = 'lh_vtc_lateral' or for faces: roi='rh_vtc_lateral')
 roi = 'lh_vtc_lateral';
-% Indicate the test (test = 'wrmt3_pseudo' or 'CFMT_Adults')
+% Indicate the test (for words: test = 'wrmt3_pseudo' or, for faces: 'CFMT_Adults')
 test = 'wrmt3_pseudo';
 
 %% load data
 
-behaveDataFileName = ['tableBrainBehave_' category '_' roi '_selective_8categories_union_' test];
+behaveDataFileName = ['tableBrainBehave_' category '_' roi '_selective_8categories_union_' test '_distinctiveness'];
 load([dataDir behaveDataFileName])
 tblnoID.distinctiveness = []; % remove distinctiveness values from table, these are the ones for selective voxels, but we need both those for nonselective and selective  voxels
 % we will collect those from RSMs
@@ -35,7 +35,9 @@ categories= {'Numbers', 'Words', 'Limbs', 'Bodies', 'AdultFaces', 'ChildFaces',.
 
 for v=1:length(voxelSubsets)
     % load distinctiveness data for nonselective or seleccive voxels
-   load([dataDir 'RSM_zscore_29Children128Sessions_vtc_' voxelSubsets{v} '_8categories_union_noSubID'])
+  
+   load([dataDir 'RSM_zscore_29children_LatMed_vtc_' voxelSubsets{v} '_8categories_union_noSubID'])
+ 
    
    % reorganize Data: matrix of the format categories x categories x sessions
     [RSMdata3D, age, allSessions, subj, tSNR]  = prepareRSMData(RSMnoIDs, roi);

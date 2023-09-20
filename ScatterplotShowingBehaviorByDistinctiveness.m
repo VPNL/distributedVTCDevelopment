@@ -8,10 +8,11 @@ dataDir = './data/';
 figuresDir = './figures/';
 % Enter file Name:
 % (1)
-% 'tableBrainBehave_Words_lh_vtc_lateral_selective_8categories_union_wrmt3_pseudo'
+% 'tableBrainBehave_Words_lh_vtc_lateral_selective_8categories_union_wrmt3_pseudo_distinctiveness'
 % or
-% (2) tableBrainBehave_AdultFaces_rh_vtc_lateral_selective_8categories_union_CFMT_Adults
-fileName = 'tableBrainBehave_Words_lh_vtc_lateral_selective_8categories_union_wrmt3_pseudo';
+% (2)
+% 'tableBrainBehave_AdultFaces_rh_vtc_lateral_selective_8categories_union_CFMT_Adults_distinctiveness'
+fileName = 'tableBrainBehave_AdultFaces_rh_vtc_lateral_selective_8categories_union_CFMT_Adults_distinctiveness';
 
 % Load tbl
 load([dataDir fileName])
@@ -38,10 +39,9 @@ yfit_meanline = polyval([lme.Coefficients.Estimate(2) lme.Coefficients.Estimate(
 eb = errorbar3(tblnew.distinctiveness', ypred', [yCI(:,1)'; yCI(:,2)'] , 1, [0.8 0.8 0.8]);
 hold on
 % finally plot overall regression line
-r2=line(tblnew.distinctiveness, ypred, 'Color', [0.5 0.5 0.5])
+r2=line(tblnew.distinctiveness, ypred, 'Color', [0.5 0.5 0.5]);
 r2.LineWidth=5;
 hold on
-
 
 
 %  plot individual data on top
@@ -71,21 +71,17 @@ for sd = 1:length(allsubj)
     indxSubValues = find(strcmp(names.Level, sub));
     RE_Int = re(indxSubValues(1));
     
-
     RE_Slope = re(indxSubValues(2));
+    
     % plot individual lines
     y = polyval( [( lme.Coefficients.Estimate(2) + RE_Slope), ( lme.Coefficients.Estimate(1) + RE_Int)], [min(distinctivenessVals) max(distinctivenessVals)]);
     pl= plot([min(distinctivenessVals) max(distinctivenessVals)],y);
     pl.Color = colors(sd,:);
     pl.LineWidth = 2;
 
-
     clearvars sub RE_Int RE_slope
     clearvars behaveVals categorysVals sub
 end
-
-
-
 
 
 %% format plot
@@ -104,7 +100,6 @@ elseif contains(test, 'CF')
 end
 set(gca, 'YTick', [ 0 20 40 60 80 100])
 set(gca,'YTicklabel', [0 20 40 60 80 100 ],'FontSize',18 )
-
 
 title(sprintf('%s %s - %s', hemi, test, category), 'Interpreter', 'none')
 set(gcf, 'color', 'w')

@@ -3,14 +3,17 @@
 % (union of selective, non-selective voxels) for 5-9-year olds and 13-17
 % year-olds
 
+clear all
+close all
+
 %% Set up
 dataDir = './data/';
 figuresDir = './figures/';
 % Enter the name of the respective dataset 
-% (1) selective: RSM_zscore_29Children128Sessions_vtc_selective_8categories_union_noSubID
-% (2) nonSelective: RSM_zscore_29Children128Sessions_vtc_nonSelective_8categories_union_noSubID
+% (1) selective: RSM_zscore_29children_LatMed_vtc_selective_8categories_union_noSubID
+% (2) nonSelective: RSM_zscore_29children_LatMed_vtc_nonSelective_8categories_union_noSubID
 % (3) all voxels: RSM_zscore_allChildrenNew_vtc_noSubID
-fileName = 'RSM_zscore_29Children128Sessions_vtc_selective_8categories_union_noSubID';
+fileName = 'RSM_zscore_29children_LatMed_vtc_selective_8categories_union_noSubID';
 dataType = char(extractAfter(fileName, 'vtc_'));
 
 if length(dataType)>7

@@ -10,10 +10,10 @@ dataDir = './data/';
 figuresDir = './figures/';
 
 % Enter the name of the ROI (i.e., roi='lh_vtc_lateral'; 'rh_vtc_lateral'
-roi =  'lh_vtc_lateral';
+roi =  'rh_vtc_lateral';
 
 % enter file name without the .mat 
-fileNames={'RSM_zscore_29Children128Sessions_vtc_selective_8categories_union_noSubID', 'RSM_zscore_29Children128Sessions_vtc_nonSelective_8categories_union_noSubID'};
+fileNames={'RSM_zscore_29children_LatMed_vtc_selective_8categories_union_noSubID', 'RSM_zscore_29children_LatMed_vtc_nonSelective_8categories_union_noSubID'};
 
 for f=1:length(fileNames)
     

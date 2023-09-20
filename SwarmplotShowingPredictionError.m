@@ -3,14 +3,15 @@
 % Note: Xjitter is random
 % It plots the difference in prediction error for behavior based on
 % distinctiveness over the union of the selective vs the non-selective voxels.
-
+clear all
+close all
 %% Set up paths, files and variables
 dataDir = './data/';
 figuresDir = './figures/';
 
 % indicate if you want to plot the difference in prediction error for Words
 % or Faces (category='Words' or 'AdultFaces')
-category='Words';
+category='AdultFaces';
 
 %%  Prepare data
 

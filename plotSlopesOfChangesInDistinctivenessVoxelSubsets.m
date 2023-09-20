@@ -7,15 +7,20 @@
 clear all; close all;
 % indicate if you want to plot data for medial or lateral VTC: 
 % partition = 'lateral' or partition = 'medial'
-partition = 'medial';
+partition = 'lateral';
 
 
 %% Set up paths, files and variables
 dataDir = './data/';
 figuresDir = './figures/';
+% To reproduce the plot in Figure 2 use:
 fileNames = {'RSM_zscore_29children_LatMed_vtc_selective_8categories_union_noSubID', ...
     'RSM_zscore_29children_LatMed_vtc_nonSelective_8categories_union_noSubID'};
 
+% Alternatively, to reproduce the plot of the control analysis in Supplementary Fig 2 use: 
+
+%  fileNames = {'RSM_zscore_29children_vtc_selective_8categories_union_t3_var_matched_noSubID', ...
+%      'RSM_zscore_29children_vtc_nonSelective_8categories_union_t3_var_matched_noSubID'};
 
 % Order of categories in RSM. 
 categories= {'Numbers', 'Words', 'Limbs', 'Bodies', 'AdultFaces', 'ChildFaces',...
