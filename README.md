@@ -17,7 +17,7 @@ Charles (2021). cbrewer : colorbrewer schemes for Matlab (https://www.mathworks.
 You can find an overview on the scripts and datasets needed to reproduce each figure and table here:
 
  Figure 1
-•	1C: script  ScatterplotShowingDistinctivenessByAge.m
+•	1C: ScatterplotShowingDistinctivenessByAge.m
 •	1D & 1E: plotSlopesOfChangesInDistinctiveness.m
 ◦	data file for both: 'RSM_zscore_allChildrenNew_vtc_noSubID'
 
@@ -25,6 +25,7 @@ Figure 2
 •	2A & 2B: plotSlopesOfChangesInDistinctivenessVoxelSubsets.m
 ◦	data files: 'RSM_zscore_29children_LatMed_vtc_selective_8categories_union_noSubID', &
 ◦	    'RSM_zscore_29children_LatMed_vtc_nonSelective_8categories_union_noSubID'
+
 
 Figure 3
 •	3A,3B,3D & 3E: plotMDSforAgeGroups.m
@@ -44,17 +45,22 @@ Figure 4
 ◦	data file D: 'PredictionError_rh_vtc_lateral_AdultFaces_CFMT_Adults'
 
 
+
 Supplementary Figure 2
 •	plotSlopesOfChangesInDistinctivenessVoxelSubsets.m
-◦	data files: 'RSM_zscore_29children_vtc_selective_8categories_union_t3_var_matched_noSubID', &      'RSM_zscore_29children_vtc_nonSelective_8categories_union_t3_var_matched_noSubID'
+◦	data files: 'RSM_zscore_29children_vtc_selective_8categories_union_t3_var_matched_noSubID', & 'RSM_zscore_29children_vtc_nonSelective_8categories_union_t3_var_matched_noSubID'
+◦	to create a table with all stats use the code: createTablesForChangesInDistinctivenessVoxelSubsets.m and the data files listed for this figure
+
 
 Supplementary Figures 3 & 4
 •	plotSlopesOfChangesInDistinctiveness_acrossTValues.m
 •	data files: 'RSM_zscore_29children_vtc_selective_8categories_union_t1_noSubID', 'RSM_zscore_29children_vtc_selective_8categories_union_t2_noSubID', 'RSM_zscore_29children_vtc_selective_8categories_union_t3_noSubID', 'RSM_zscore_29children_vtc_selective_8categories_union_t4_noSubID', 'RSM_zscore_29children_vtc_selective_8categories_union_t5_noSubID'
+•	to create a table with all stats use the code: createTablesForChangesInDistinctivenessVoxelSubsets_varyingTVal.m and the data files listed for this figure
 
 Supplementary Figure 5
 •	plotSlopesOfChangesInDistinctiveness_DiskROIs.m
 •	data file: 'RSM_zscore_29children_DISK_ROIs_noSubID'
+•	to create a table with the stats use the code: createTablesForChangesInDistinctiveness_DISKROIs and the data files listed for this figure
 
 Supplementary Figure 6 & 7
 •	A,C,D: plotRSMforAgeGroups.m
