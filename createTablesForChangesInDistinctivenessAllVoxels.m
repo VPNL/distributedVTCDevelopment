@@ -1,11 +1,10 @@
-% This script plots the slopes of linear mixed models indicating the change in
+% This script creates the tables of stats with the linear mixed models indicating the change in
 % distinctiveness per year
 close all
 clear all
 
 %% Set up paths, files and variables
 dataDir = './data/';
-figuresDir = './figures/';
 fileName = 'RSM_zscore_allChildrenNew_vtc_noSubID';
 
 % Choose one of these ROIS: 'lh_vtc_lateral', 'rh_vtc_lateral',

@@ -1,11 +1,11 @@
-% This script plots the slopes of linear mixed models indicating the change in
-% distinctiveness per year
+% This script creates tables of the linear mixed models indicating the change in
+% distinctiveness per year in different subsets of voxels
 close all
 clear all
 
 %% Set up paths, files and variables
 dataDir = './data/';
-figuresDir = './figures/';
+
 % to create the tables for the union of the selective voxels use
 % (1)fileName =
 % 'RSM_zscore_29children_LatMed_vtc_selective_8categories_union_noSubID'
