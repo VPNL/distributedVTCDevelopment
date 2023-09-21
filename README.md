@@ -14,7 +14,7 @@ Charles (2021). cbrewer : colorbrewer schemes for Matlab (https://www.mathworks.
 
 
 
- ## You can find an overview on the scripts and datasets needed to reproduce each figure and table here:
+ ## Overview on the scripts and datasets needed to reproduce each figure and table
 
  **Figure 1**
 •	1C: ScatterplotShowingDistinctivenessByAge.m
