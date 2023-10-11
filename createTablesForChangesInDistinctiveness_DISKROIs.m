@@ -7,7 +7,7 @@ clear all
 dataDir = './data/';
 
 fileName = 'RSM_zscore_29children_DISK_ROIs_noSubID';
-
+dataType = extractAfter(fileName, 'children_');
 %% indicate the region of interest you want to plot the data for, select one
 % of
 % 'lh_mOTS_word_SessionAvgDisk'
@@ -24,7 +24,7 @@ fileName = 'RSM_zscore_29children_DISK_ROIs_noSubID';
 % 'rh_pFus_faceadultfacechild_SessionAvgDisk'
 % 'rh_CoS_placehouse_SessionAvgDisk'
 
-roi ='rh_pFus_faceadultfacechild_SessionAvgDisk'
+roi ='lh_pOTS_word_SessionAvgDisk';
 
 %%
 
@@ -104,9 +104,12 @@ for c= 1:length(categories)
 
 
 end
-
+% show table
 t = table(categories', int_parameter, int_lowerCI, int_upperCI, int_df, int_t, int_p,...
     age_parameter, age_lowerCI, age_upperCI, age_df, age_t, age_p,...
     tSNR_parameter, tSNR_lowerCI, tSNR_upperCI, tSNR_df, tSNR_t, tSNR_p)
 
-
+% to save the table as excel file:
+% filename =  sprintf('table_LMM_%s_%s.xlsx', dataType, roi);
+% filePath =   ['./excelFiles/' filename];
+% writetable(t,filePath,'Sheet',1)

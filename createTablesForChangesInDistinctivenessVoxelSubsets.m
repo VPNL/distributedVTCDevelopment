@@ -13,7 +13,7 @@ dataDir = './data/';
 % (2) fileName =
 % 'RSM_zscore_29children_LatMed_vtc_nonSelective_8categories_union_noSubID'
 fileName = 'RSM_zscore_29children_LatMed_vtc_selective_8categories_union_noSubID';
-
+dataType = extractAfter(fileName, 'vtc_');
 % Choose one of these ROIS: 'lh_vtc_lateral', 'rh_vtc_lateral',
 % 'lh_vtc_medial', 'rh_vtc_medial'
 roi = 'lh_vtc_lateral';
@@ -95,9 +95,13 @@ for c= 1:length(categories)
 
 
 end
-
+% display table
 t = table(categories', int_parameter, int_lowerCI, int_upperCI, int_df, int_t, int_p,...
     age_parameter, age_lowerCI, age_upperCI, age_df, age_t, age_p,...
     tSNR_parameter, tSNR_lowerCI, tSNR_upperCI, tSNR_df, tSNR_t, tSNR_p)
 
+% % to save the table as excel file:
+% filename =  sprintf('table_LMM_%s_%s.xlsx', dataType, roi);
+% filePath =   ['./excelFiles/' filename];
+% writetable(t,filePath,'Sheet',1)
 
