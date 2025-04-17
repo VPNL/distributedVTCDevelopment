@@ -5,11 +5,14 @@ Code and data accompanying the manuscript “Longitudinal development of categor
 
 The code was developed and tested in MATLAB version 2017b.  The code to generate the swarm plot needs to be run in MATLAB version 2020b or newer.
 
-Here we provide the code necessary to generate the figures and tables. Some of the functions use the cbrewer color schemes, which can be found here (https://de.mathworks.com/matlabcentral/fileexchange/34087-cbrewer-colorbrewer-schemes-for-matlab). Please make sure to download these and add them to your path before you begin.
-Please also make sure to add the ‘helperFunctions’ folder to your path.
+Here we provide the code necessary to generate the figures and tables. Some of the functions use the cbrewer color schemes, which can be found here ([(https://de.mathworks.com/matlabcentral/fileexchange/45208-colorbrewer-attractive-and-distinctive-colormaps]). 
+Please make sure to add the ‘helperFunctions’ folder to your path.
 
 
-Charles (2021). cbrewer : colorbrewer schemes for Matlab (https://www.mathworks.com/matlabcentral/fileexchange/34087-cbrewer-colorbrewer-schemes-for-matlab), MATLAB Central File Exchange.
+ColorBrewer: Attractive and Distinctive Colormaps
+Version 3.2.5 (18,9 KB) von Stephen23
+The complete palette of ColorBrewer 2.0 colormaps. Simple selection by scheme name and map length.
+https://github.com/DrosteEffect/BrewerMap ([https://matlab.mathworks.com/open/fileexchange/v1?id=45208](https://de.mathworks.com/matlabcentral/fileexchange/45208-colorbrewer-attractive-and-distinctive-colormaps)), MATLAB Central File Exchange.
 
 
 
