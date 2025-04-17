@@ -12,7 +12,7 @@ figuresDir = './figures/';
 % or
 % (2)
 % 'tableBrainBehave_AdultFaces_rh_vtc_lateral_selective_8categories_union_CFMT_Adults_distinctiveness'
-fileName = 'tableBrainBehave_AdultFaces_rh_vtc_lateral_selective_8categories_union_CFMT_Adults_distinctiveness';
+fileName = 'tableBrainBehave_Words_lh_vtc_lateral_selective_8categories_union_wrmt3_pseudo_distinctiveness';
 
 % Load tbl
 load([dataDir fileName])
@@ -46,7 +46,9 @@ hold on
 
 %  plot individual data on top
 allsubj = unique(tblnoID.subj);
-colors1 = cbrewer('qual', 'Set3', 12); colors3 = cbrewer('qual', 'Set1', 9); colors2 = cbrewer('qual', 'Dark2', 8);
+colors1 = brewermap(11, 'PiYG');  
+colors2 = brewermap(11, 'PuOr'); 
+colors3 = brewermap(9, 'RdYlBu'); 
 colors = [colors1; colors2; colors3];
 
 

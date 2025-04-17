@@ -55,7 +55,11 @@ hold on
 
 %  plot individual data on top
 allsubj = unique(tblnoID.subj, 'stable');
-colors1 = cbrewer('qual', 'Set3', 12); colors3 = cbrewer('qual', 'Set1', 9); colors2 = cbrewer('qual', 'Dark2', 8);
+
+colors1 = brewermap(11, 'PiYG');  
+colors2 = brewermap(11, 'PuOr'); 
+colors3 = brewermap(9, 'RdYlBu'); 
+
 colors = [colors1; colors2; colors3];
 
 

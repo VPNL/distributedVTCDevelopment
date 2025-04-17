@@ -14,10 +14,10 @@ load([dataDir fileName])
 
 % Indicate the category (for instance, category = 'Words', can be  'Numbers', 'Words', 'Limbs', 'Bodies', 'AdultFaces', 'ChildFaces',...
 % 'Cars', 'StringInstruments', 'Houses', 'Corridors')
-category = 'Words';
+category = 'ChildFaces';
 
 % Indicate the roi (roi = 'lh_vtc_lateral' or roi = 'rh_vtc_lateral')
-roi = 'lh_vtc_lateral';
+roi = 'rh_vtc_lateral';
 
 
 %% Gather data and compute distinctiveness for each session and ROI, Run linear mixed models
@@ -58,9 +58,12 @@ hold on
 
 %  plot individual data on top
 allsubj = unique(tbl.subj);
-colors1 = cbrewer('qual', 'Set3', 12);        
-colors3 = cbrewer('qual', 'Set1', 9);   
-colors2 = cbrewer('qual', 'Dark2', 8);
+colors1 = brewermap(11, 'PiYG');  
+colors2 = brewermap(11, 'PuOr'); 
+colors3 = brewermap(9, 'RdYlBu'); 
+% colors1 = cbrewer(qual', 'Set3', 12);    
+% colors3 = cbrewer('qual', 'Set1', 9);   
+% colors2 = cbrewer('qual', 'Dark2', 8);
 colors = [colors1; colors3; colors2];
 
 % Find values for each subject and plot in one color
